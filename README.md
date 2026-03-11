@@ -1,152 +1,240 @@
-# 🚀 100 Days of Code — Python Web Developer
+# 🚀 TodoList API
+
+![Build Status](https://github.com/scaglia-aylla1/100days-python-web/actions/workflows/tests.yml/badge.svg)
+
 ## 📌 Sobre o Projeto
 
-### Este repositório documenta minha jornada no desafio #100DaysOfCode, com foco em me tornar uma desenvolvedora web profissional utilizando Python no back-end.
-
-### O objetivo é construir projetos reais, aplicando boas práticas de engenharia de software, versionamento, arquitetura e deploy — simulando um ambiente corporativo.
-
-## 🎯 Objetivo Principal
-
-### Desenvolver domínio prático nas principais tecnologias do mercado para desenvolvimento web com Python, construindo:
-
-### - **2 projetos intermediários**
-
-### - **1 projeto avançado full stack**
-
-### - Estrutura profissional de gestão com Kanban
-
-### - Código versionado e documentado
+### API REST para gerenciamento de tarefas desenvolvida com Flask.
+### O projeto implementa boas práticas de desenvolvimento backend, incluindo arquitetura em camadas, testes automatizados e integração contínua.
 
 ## 🛠️ Stack Tecnológica
-* Backend
 
 * Python
 
 * Flask
 
-* Django
+* Flask-Smorest(documentação)
 
-* FastAPI
+* SQLAlchemy
 
 * PostgreSQL
 
-* Frontend
+* Flask-Migrate
 
-* React
+* Marshmallow
 
-* Bootstrap
+* Pytest
 
-* Testes com PyTest
-
-* DevOps
+* SQLite
 
 * Docker
-
-* Deploy em nuvem
 
 * Versionamento com Git
+Github Actions
 
-## 📂 Estrutura do Repositório
+## 📂 Estrutura do Projeto
 ```
-    100days-python-web/
-    │
-    ├── todolist-api/
-    ├── finance-control-django/
-    ├── fastapi-fullstack/
-    ├── docs/
-    └── README.md
+    todolist-api 
+    │ 
+    ├── app 
+    │    │ 
+    │    ├── routes.py  
+    │    ├── extensions.py 
+    │    │ 
+    │    ├── models 
+    │    │    │ 
+    │    │    └── task.py 
+    │    ├── schemas 
+    │    │    └── task_schema.py 
+    │    │  
+    │    └── services │
+    │        └── task_service.py 
+    │     
+    ├── tests 
+    │    └── test_tasks.py 
+    │ 
+    ├── migrations 
+    ├── pytest.ini 
+    ├── requirements.txt 
+    └── run.py
 ```
 
-## 📊 Gestão do Projeto
+## O projeto segue uma arquitetura em camadas:
+* **Routes** → definição dos endpoints da API
 
-### Este desafio está organizado utilizando metodologia Kanban com:
+* **Services** → lógica de negócio
 
-* Backlog
+* **Schemas** → validação e serialização de dados
 
-* Ready
+* **Models** → entidades do banco de dados
 
-* In Progress
+* **Tests** → testes automatizados da API
 
-* In Review
+## Funcionalidades
 
-* Done
+* Criar tarefas
 
-### Cada tarefa possui:
+* Listar tarefas
 
-* Descrição clara
+* Filtrar tarefas por status
 
-* Critérios de aceite
+* Marcar tarefa como concluída
 
-* Labels técnicas
+* Deletar tarefa
 
-* Prioridade
+* Verificar saúde da API
 
-* Sprint definida
+## 📡 Endpoints da API
+```
+  Método	   Endpoint	          Descrição
+  POST	       /tasks/ 	          Criar uma nova tarefa
+  GET	       /tasks/	          Listar todas as tarefas
+  PATCH	       /tasks/{id}	      Marcar tarefa como concluída
+  DELETE	   /tasks/{id}	      Deletar tarefa
+  GET	       /tasks/health	  Verificar status da API
 
-## 🗓️ Roadmap
-### 🔹 Fase 1 — Fundamentos
+```
 
-* Revisão avançada de Python
+## 📥 Exemplo de requisição
+### Criar tarefa
+#### POST /tasks/
+```
+Body:
 
-* HTTP e REST
+    {
+    "title": "Estudar Flask"
+    }
 
-* SQL
+    Resposta:
 
-* Primeira API com Flask
+    {
+    "id": 1,
+    "title": "Estudar Flask",
+    "completed": false
+    }
+```
+## 📄 Documentação da API
 
-### 🔹 Projeto Intermediário 1 — TodoList API
+### A documentação interativa está disponível via Swagger UI:
 
-* CRUD completo
+### **/docs/swagger**
 
-* Persistência com PostgreSQL
+### Ela é gerada automaticamente utilizando Flask-Smorest e OpenAPI.
 
-* Docker
+## 🧪 Testes automatizados
 
-* Documentação profissional
+### Os testes foram implementados utilizando Pytest.
 
-### 🔹 Projeto Intermediário 2 — Finance Control-(django)
+###  Testes localmente:
 
-* Sistema de autenticação
+#### pytest
 
-* CRUD de receitas e despesas
+### A suíte de testes valida:
 
-* Categorias financeiras
+* criação de tarefas
 
-* Dashboard com saldo e métricas
+* listagem de tarefas
 
-* Filtros por período
+* atualização de status
 
-* Deploy em produção
+* remoção de tarefas
 
-### 🔹 Projeto Avançado — Sistema Full Stack
+* endpoint de health check
 
-* Backend com FastAPI
+## ⚙️ Integração contínua
 
-* Autenticação JWT
+### O projeto utiliza GitHub Actions para executar automaticamente os testes a cada push ou pull request.
 
-* Testes automatizados
+### A pipeline realiza:
 
-* Frontend com React
+* instalação das dependências
 
-* Deploy completo
+* execução dos testes
 
-### 📈 Competências Desenvolvidas
+* validação do build
 
-* Arquitetura em camadas
+## Executando o Projeto
 
-* APIs REST
+### 1️⃣ Clonar repositório
+### git clone https://github.com/scaglia-aylla1/100days-python-web.git
+### 2️⃣ Entrar no diretório
+  ####  todolist-api
+### 3️⃣ Criar ambiente virtual
+  #### python -m venv venv
+### 4️⃣ Ativar ambiente
 
-* Autenticação e segurança
+### Windows:
 
-* Modelagem relacional
+#### .\venv\Scripts\activate
 
-* Testes automatizados
+### Linux/Mac:
 
-* Containerização
+#### source venv/bin/activate
+### 5️⃣ Instalar dependências
+#### pip install -r requirements.txt
+### 6️⃣ Rodar migrações
+#### flask db upgrade
+### 7️⃣ Executar API
+#### flask run
 
-* Deploy em produção
+## 🧠 Competências demonstradas no projeto
 
-* Gestão ágil com Kanban
+Este projeto foi desenvolvido com foco em boas práticas de engenharia de software e desenvolvimento backend.
+
+### 🔹 Desenvolvimento de APIs REST
+
+* Criação de endpoints HTTP utilizando **Flask**
+* Implementação de operações CRUD para gerenciamento de tarefas
+* Uso correto de métodos HTTP (`GET`, `POST`, `PATCH`, `DELETE`)
+* Estruturação de respostas JSON padronizadas
+
+### 🔹 Arquitetura de Software
+
+* Organização do projeto em **arquitetura em camadas**
+* Separação clara de responsabilidades entre:
+
+  * **Routes** (camada de API)
+  * **Services** (lógica de negócio)
+  * **Schemas** (validação e serialização)
+  * **Models** (entidades de dados)
+
+### 🔹 Persistência de Dados
+
+* Modelagem de entidades com **SQLAlchemy**
+* Uso de **ORM** para manipulação de dados
+* Gerenciamento de versionamento do banco com **Flask-Migrate**
+
+### 🔹 Validação de Dados
+
+* Validação de entrada com **Marshmallow**
+* Criação de schemas para serialização e desserialização de objetos
+* Garantia de integridade dos dados enviados à API
+
+### 🔹 Testes Automatizados
+
+* Desenvolvimento de testes automatizados utilizando **Pytest**
+* Testes de endpoints utilizando **Flask Test Client**
+* Uso de banco de dados **SQLite em memória** para execução de testes isolados
+
+### 🔹 Integração Contínua (CI)
+
+* Configuração de pipeline com **GitHub Actions**
+* Execução automática da suíte de testes a cada push ou pull request
+* Garantia de estabilidade do projeto através de validação automática
+
+### 🔹 Boas práticas de desenvolvimento
+
+* Versionamento de código com **Git**
+* Documentação automática da API com **OpenAPI / Swagger**
+* Organização de código seguindo padrões utilizados em aplicações backend profissionais
+
+
+## 📌 Melhorias futuras
+
+* Autenticação de usuários
+
+* Deploy em cloud
+
 
 ## 🧠 Propósito Profissional
 
@@ -154,4 +242,8 @@
 
 ## 📌 Status Atual
 
- ### 🚧 Em andamento — Sprint 1
+ ### 🚧 Em andamento 
+
+## 👩‍💻 Autora
+
+### Projeto desenvolvido por **Aylla Scaglia** durante estudos de desenvolvimento backend com Python.
